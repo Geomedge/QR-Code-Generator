@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "QR Code Generator (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "QR Code Generator (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

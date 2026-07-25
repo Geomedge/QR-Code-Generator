@@ -1,0 +1,104 @@
+<Page x:Class="QR_Code_Generator.Wifi"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:CommunityToolkit.WinUI.Controls"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      mc:Ignorable="d"
+      >
+    
+
+    <Grid>
+        <Border CornerRadius="5" Margin="75,5,75,2">
+            <StackPanel>
+                <local:SettingsExpander x:Name="settingsCard"
+                    VerticalAlignment="Top"
+                    Description="Select Dropdown to generate WiFi QR Code"
+                    Header="WiFi QR Code"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE701;}"
+                >
+                    <local:SettingsExpander.Items>
+                        <local:SettingsCard Header="Select Wi-Fi Security">
+                            <ComboBox SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
+                                <ComboBoxItem>WEP</ComboBoxItem>
+                                <ComboBoxItem>WPA</ComboBoxItem>
+                                <ComboBoxItem>WPA2</ComboBoxItem>
+                            </ComboBox>
+                        </local:SettingsCard>
+
+                        <local:SettingsCard Header="Type SSID">
+                            <TextBox PlaceholderText="Enter SSID" Width="300" x:Name="SSID"/>
+                        </local:SettingsCard>
+
+                        <local:SettingsCard Header="Type Password">
+                            <PasswordBox PlaceholderText="Enter Password" PasswordChar="*" Width="300" x:Name="Password"/>
+                        </local:SettingsCard>
+
+                        <local:SettingsCard Header="Generate QR Code" x:Name="changeThis">
+                            <Button Content="Generate" Click="GenerateWifiButton_Click"/>
+                        </local:SettingsCard>
+                    </local:SettingsExpander.Items>
+                </local:SettingsExpander>
+
+
+                <local:SettingsExpander x:Name="card2"
+                    Margin="0,5,0,0"
+                    VerticalAlignment="Top"
+                    Description="Select Dropdown to generate Link QR Code"
+                    Header="Link QR Code"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE71B;}"
+                >
+                    <local:SettingsExpander.Items>
+                        <local:SettingsCard Header="Type Link">
+                            <TextBox PlaceholderText="Enter Link" Width="300" x:Name="URLTextBox"/>
+                        </local:SettingsCard>
+
+                        <local:SettingsCard Header="Generate QR Code">
+                            <Button Content="Generate" Click="GenerateURLButton_Click"/>
+                        </local:SettingsCard>
+                    </local:SettingsExpander.Items>
+                </local:SettingsExpander>
+
+
+                <local:SettingsExpander x:Name="card3"
+                    Margin="0,5,0,0"
+                    VerticalAlignment="Top"
+                    Description="Select Dropdown to generate Phone QR Code"
+                    Header="Phone QR Code"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE717;}"
+                >
+                    <local:SettingsExpander.Items>
+                        <local:SettingsCard Header="Type Phone Number">
+                            <TextBox PlaceholderText="Enter Phone Number" Width="300" x:Name="PhoneTextBox"/>
+                        </local:SettingsCard>
+
+                        <local:SettingsCard Header="Generate QR Code">
+                            <Button Content="Generate" Click="GeneratePhoneButton_Click"/>
+                        </local:SettingsCard>
+                    </local:SettingsExpander.Items>
+                </local:SettingsExpander>
+                
+                
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                    <Button Margin="0,10,0,0" Width="90"  Content="Clear" Click="ClearButton_Click" Grid.Column="0" Name="ClearButton" IsEnabled="False"/>
+                    <DropDownButton Margin="5,10,0,0" Width="110" Content="Download" Grid.Column="1" Name="DownloadButton" IsEnabled="False">
+                        <DropDownButton.Flyout>
+                            <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem Text="800x800" Click="MenuFlyoutItem_Click_1"/>
+                                <MenuFlyoutItem Text="1000x1000" Click="MenuFlyoutItem_Click_2"/>
+                                <MenuFlyoutItem Text="1200x1200" Click="MenuFlyoutItem_Click_3"/>
+                            </MenuFlyout>
+                        </DropDownButton.Flyout>
+                    </DropDownButton>
+                </Grid>
+
+                <Image x:Name="qrCodeImage" Height="250" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
