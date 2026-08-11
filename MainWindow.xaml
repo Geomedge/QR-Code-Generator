@@ -23,8 +23,8 @@
                         IsBackEnabled="True">
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Document" Content="QR Code Generator" Tag="Wifi" />
-                <NavigationViewItem Icon="AllApps" Content="Mass QR Code Generator" Tag="MassQRCode" />
+                <NavigationViewItem Icon="Document" Content="QR Code Utility" Tag="Wifi" />
+                <NavigationViewItem Icon="AllApps" Content="Mass QR Code Utility" Tag="MassQRCode" />
             </NavigationView.MenuItems>
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">

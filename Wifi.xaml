@@ -11,7 +11,7 @@
 
     <Grid>
         <StackPanel>
-            <TextBlock Margin="36,40,0,36"  Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">QR Code Generator</TextBlock>
+            <TextBlock Margin="36,40,0,36"  Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">QR Code Utility</TextBlock>
             <Border Margin="36,5,36,2">
             <StackPanel>
                 <local:SettingsExpander x:Name="WifiCard"

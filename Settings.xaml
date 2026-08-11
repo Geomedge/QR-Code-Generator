@@ -63,7 +63,7 @@
                     <local:SettingsExpander x:Name="AboutExpander"
                         VerticalAlignment="Top"
                         Description="© 2026 Geomedge. All rights reserved."
-                        Header="QR Code Generator"
+                        Header="QR Code Utility By Geomedge"
                         >
                         <TextBlock Grid.Column="1"
                            Name="VersionTextBlock"
