@@ -9,24 +9,28 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Drawing;
 using System.Runtime.InteropServices;
-using WinRT.Interop;
-using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using WinRT.Interop;
+using static QR_Code_Generator.Settings;
 
 namespace QR_Code_Generator
 {
     public sealed partial class MainWindow : Window
     {
+        public static MainWindow? Instance { get; private set; }
         public MainWindow()
-        {
+        { 
             this.InitializeComponent();
+            Instance = this;
             NavView.SelectedItem = NavView.MenuItems[0];
             ContentFrame.Navigate(typeof(Wifi));
             ExtendsContentIntoTitleBar = true;
+            RefreshNavigationView();
         }
 
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) // Handles the back button click event
@@ -100,5 +104,20 @@ namespace QR_Code_Generator
                 }
             }
         }
+
+        public void RefreshNavigationView()
+        {
+            var massItem = NavView.MenuItems
+        .OfType<NavigationViewItem>()
+        .FirstOrDefault(i => (string)i.Tag == "MassQRCode");
+
+            if (massItem != null)
+            {
+                massItem.Visibility = SettingData.Current.ShowMassQR
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            }
+        }
+
     }
 }

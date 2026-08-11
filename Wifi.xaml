@@ -6,7 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="using:CommunityToolkit.WinUI"
       mc:Ignorable="d"
-      >
+      Loaded="Page_Loaded">
     <!-- Left Top Right Bottom-->
 
     <Grid>
@@ -14,7 +14,7 @@
             <TextBlock Margin="36,40,0,36"  Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">QR Code Generator</TextBlock>
             <Border Margin="36,5,36,2">
             <StackPanel>
-                <local:SettingsExpander x:Name="settingsCard"
+                <local:SettingsExpander x:Name="WifiCard"
                     VerticalAlignment="Top"
                     Description="Select Dropdown to generate WiFi QR Code"
                     Header="WiFi QR Code"
@@ -44,7 +44,7 @@
                 </local:SettingsExpander>
 
 
-                <local:SettingsExpander x:Name="card2"
+                <local:SettingsExpander x:Name="LinkCard"
                     Margin="0,5,0,0"
                     VerticalAlignment="Top"
                     Description="Select Dropdown to generate Link QR Code"
@@ -63,7 +63,7 @@
                 </local:SettingsExpander>
 
 
-                <local:SettingsExpander x:Name="card3"
+                <local:SettingsExpander x:Name="PhoneCard"
                     Margin="0,5,0,0"
                     VerticalAlignment="Top"
                     Description="Select Dropdown to generate Phone QR Code"

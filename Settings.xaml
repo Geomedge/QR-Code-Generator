@@ -8,7 +8,8 @@
     xmlns:local="using:CommunityToolkit.WinUI.Controls"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:ui="using:CommunityToolkit.WinUI"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
     <!--Left Up Right Down-->
 
     <Grid>
@@ -51,7 +52,7 @@
                            Description="Show new Mass QR Code Generation Menu"
                            HeaderIcon="{ui:FontIcon Glyph=&#xE710;}">
                         <StackPanel>
-                            <ToggleSwitch AutomationProperties.Name="Toggle"/>
+                            <ToggleSwitch Name="ShowMassQR" Toggled="ToggleSwitch_Toggled"/>
                         </StackPanel>
                     </local:SettingsCard>
                 </StackPanel>
@@ -65,15 +66,18 @@
                         Header="QR Code Generator"
                         >
                         <TextBlock Grid.Column="1"
-                           Text="v1.4.2"
+                           Name="VersionTextBlock"
                            Opacity="0.7"
                            VerticalAlignment="Center"
                            Style="{StaticResource BodyTextBlockStyle}" />
                         <local:SettingsExpander.Items>
-                            
-                            <local:SettingsCard Header="Type SSID">
-                                <TextBox PlaceholderText="Enter SSID" Width="300" x:Name="SSID"/>
-                            </local:SettingsCard>
+
+                            <local:SettingsCard ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                               ActionIconToolTip="Open in new window"
+                               Click="OpenIssueLink_Click"
+                               Header="Report a bug or request a feature"
+                               IsClickEnabled="True"
+                               />
 
                         </local:SettingsExpander.Items>
                     </local:SettingsExpander>
