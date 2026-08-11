@@ -21,7 +21,6 @@ namespace QR_Code_Generator
 {
     public sealed partial class MainWindow : Window
     {
-        //Initialises the MainWindow and loads pages
         public MainWindow()
         {
             this.InitializeComponent();
@@ -29,6 +28,7 @@ namespace QR_Code_Generator
             ContentFrame.Navigate(typeof(Wifi));
             ExtendsContentIntoTitleBar = true;
         }
+
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) // Handles the back button click event
         {
             if (ContentFrame.CanGoBack)

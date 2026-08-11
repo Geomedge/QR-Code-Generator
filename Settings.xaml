@@ -9,93 +9,77 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
+    <!--Left Up Right Down-->
 
     <Grid>
-        <StackPanel Margin="36,0,36,0">
-            <TextBlock Margin="0,40,0,36" Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">Settings</TextBlock>
+        <!--Grid so Scroll Viewer Works-->
+        <Border Margin="36,40,36,0">
+            <StackPanel>
+                <!--Stackpanel for border only-->
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">Settings</TextBlock>
 
-            <TextBlock Margin="0,0,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">General</TextBlock>
-            <StackPanel Spacing="4" Margin="0,0,0,15">
-                <controls:SettingsCard x:Name="settingsCard"
-                       Header="Hide/Show Elements"
-                       Description="Select which elements should be hidden or shown."
-                       HeaderIcon="{ui:FontIcon Glyph=&#xE799;}"
-                       >
-                    <!-- This is the checkboxes for Wifi.xaml elements -->
-                    <StackPanel>
-                        <CheckBox x:Name="WifiCheckBox" Content="WiFi QR Codes" Margin="24,0,0,0" />
-                        <CheckBox x:Name="LinkCheckBox" Content="Link QR Codes" Margin="24,0,0,0" />
-                        <CheckBox x:Name="PhoneCheckBox" Content="Phone QR Codes" Margin="24,0,0,0" />
-                    </StackPanel>
-                </controls:SettingsCard>
+                    <!--GENERAL SETTINGS-->
+                    <TextBlock Margin="0,10,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">Appearance &amp; Behavior</TextBlock>
 
-                <controls:SettingsCard Header="A card with custom objects as its Description"
-                           >
-                    <controls:SettingsCard.Description>
-                        <HyperlinkButton Content="Learn more about Phone Link" />
-                    </controls:SettingsCard.Description>
-                    <Button Content="Open Phone Link"
-                Style="{StaticResource AccentButtonStyle}" />
-                </controls:SettingsCard>
+                    <local:SettingsCard x:Name="settingsCard"
+                           Header="Hide/Show Elements"
+                           Description="Select which elements should be hidden or shown."
+                           HeaderIcon="{ui:FontIcon Glyph=&#xE799;}">
+                        <StackPanel>
+                            <CheckBox x:Name="WifiCheck" Checked="Checkbox1" Unchecked="Checkbox1" Content="WiFi QR Codes"/>
+                            <CheckBox x:Name="LinkCheck" Checked="Checkbox1" Unchecked="Checkbox1" Content="Link QR Codes" />
+                            <CheckBox x:Name="PhoneCheck" Checked="Checkbox1" Unchecked="Checkbox1" Content="Phone QR Codes"/>
+                        </StackPanel>
+                    </local:SettingsCard>
+                </StackPanel>
 
-                <controls:SettingsCard Description="When resizing a SettingsCard, the Content will wrap vertically. You can override this breakpoint by setting the SettingsCardWrapThreshold resource. For edge cases, you can also hide the icon by setting SettingsCardWrapNoIconThreshold."
-                           Header="Adaptive layouts"
-                           HeaderIcon="{ui:FontIcon Glyph=&#xE745;}"
-                           >
-                    <controls:SettingsCard.Resources>
-                        <x:Double x:Key="SettingsCardWrapThreshold">800</x:Double>
-                        <x:Double x:Key="SettingsCardWrapNoIconThreshold">600</x:Double>
-                    </controls:SettingsCard.Resources>
-                    <Button Content="This control will wrap vertically!"
-                Style="{StaticResource AccentButtonStyle}" />
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="This is a card with a Header only" />
+                <!--EXPERIMENTAL SETTINGS-->
+                <StackPanel>
+                    <TextBlock Margin="0,10,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">Experimental Settings</TextBlock>
+
+                    <InfoBar
+                    IsOpen="True"
+                    Severity="Warning"
+                    Title="Experimental Features"
+                    Message="The following features are still in development. Behaviour may change and some functionality may be incomplete."
+                    IsClosable="True"
+                    Margin="0,0,0,5"/>
+
+                    <local:SettingsCard x:Name="experimnetssettingsCard"
+                           Header="Enable Mass QR Code Generation"
+                           Description="Show new Mass QR Code Generation Menu"
+                           HeaderIcon="{ui:FontIcon Glyph=&#xE710;}">
+                        <StackPanel>
+                            <ToggleSwitch AutomationProperties.Name="Toggle"/>
+                        </StackPanel>
+                    </local:SettingsCard>
+                </StackPanel>
+                
+                <!--ABOUT Panel-->
+                <StackPanel>
+                    <TextBlock Margin="0,10,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
+                    <local:SettingsExpander x:Name="AboutExpander"
+                        VerticalAlignment="Top"
+                        Description="© 2026 Geomedge. All rights reserved."
+                        Header="QR Code Generator"
+                        >
+                        <TextBlock Grid.Column="1"
+                           Text="v1.4.2"
+                           Opacity="0.7"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource BodyTextBlockStyle}" />
+                        <local:SettingsExpander.Items>
+                            
+                            <local:SettingsCard Header="Type SSID">
+                                <TextBox PlaceholderText="Enter SSID" Width="300" x:Name="SSID"/>
+                            </local:SettingsCard>
+
+                        </local:SettingsExpander.Items>
+                    </local:SettingsExpander>
+                </StackPanel>
+
             </StackPanel>
-
-            
-            <!--Experiments-->
-            <TextBlock Margin="0,0,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">Experiments</TextBlock>
-
-            <InfoBar
-                IsOpen="True"
-                Severity="Warning"
-                Title="Experimental Features"
-                Message="The following features are still in development. Behaviour may change and some functionality may be incomplete."
-                IsClosable="True"
-                Margin="0,0,0,5"/>
-
-            <StackPanel Spacing="4" Margin="0,0,0,10">
-                <controls:SettingsCard x:Name="settingsCard2"
-                Header="Enable Mass QR Code Generation"
-                Description="Show new Mass QR Code Generation Menu"
-                HeaderIcon="{ui:FontIcon Glyph=&#xE799;}"
-                >
-                    <!-- This is the checkboxes for Wifi.xaml elements -->
-                    <StackPanel>
-                        <ToggleSwitch AutomationProperties.Name="Toggle"/>
-                    </StackPanel>
-                </controls:SettingsCard>
-
-                <controls:SettingsCard Header="A card with custom objects as its Description"
-               >
-                    <controls:SettingsCard.Description>
-                        <HyperlinkButton Content="Learn more about Phone Link" />
-                    </controls:SettingsCard.Description>
-                    <Button Content="Open Phone Link" Style="{StaticResource AccentButtonStyle}" />
-                </controls:SettingsCard>
-
-                <controls:SettingsCard Description="When resizing a SettingsCard, the Content will wrap vertically. You can override this breakpoint by setting the SettingsCardWrapThreshold resource. For edge cases, you can also hide the icon by setting SettingsCardWrapNoIconThreshold."
-               Header="Adaptive layouts"
-               HeaderIcon="{ui:FontIcon Glyph=&#xE745;}"
-               >
-                    <controls:SettingsCard.Resources>
-                        <x:Double x:Key="SettingsCardWrapThreshold">800</x:Double>
-                        <x:Double x:Key="SettingsCardWrapNoIconThreshold">600</x:Double>
-                    </controls:SettingsCard.Resources>
-                    <Button Content="This control will wrap vertically!" Style="{StaticResource AccentButtonStyle}" />
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="This is a card with a Header only" />
-            </StackPanel>
-        </StackPanel>
+        </Border>
     </Grid>
 </Page>

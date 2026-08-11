@@ -9,7 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -21,25 +23,50 @@ namespace QR_Code_Generator
     {
         public Settings()
         {
-            InitializeComponent();
-            Checkboxes();
+            this.InitializeComponent();
+            LoadSettings();
         }
 
-        public void SavedSettings()
+        private void Checkbox1(object sender, RoutedEventArgs e)
         {
-            var settings = ApplicationData.Current.LocalSettings;
-            settings.Values["DarkMode"] = true;
-            bool darkMode = (bool)(settings.Values["DarkMode"] ?? false);
+            var checkbox = (CheckBox)sender;
+            bool isChecked = checkbox.IsChecked == true;
+
+            switch (checkbox.Name)
+            {
+                case "Wifi":
+                    Save("Wifi", isChecked);
+                    break;
+
+                case "Phone":
+                    Save("Phone", isChecked);
+                    break;
+
+                case "Link":
+                    Save("Link", isChecked);
+                    break;
+            }
         }
 
-
-        public void Checkboxes()
+        private void Save(string key, bool value)
         {
-            WifiCheckBox.IsChecked = AppState.elementHide[0];
-            LinkCheckBox.IsChecked = AppState.elementHide[1];
-            PhoneCheckBox.IsChecked = AppState.elementHide[2];
+            ApplicationData.Current.LocalSettings.Values[key] = value;
         }
 
+        private void LoadSettings()
+        {
+            WifiCheck.IsChecked = GetSetting("Wifi");
+            PhoneCheck.IsChecked = GetSetting("Phone");
+            LinkCheck.IsChecked = GetSetting("Link");
+        }
 
+        private bool GetSetting(string key)
+        {
+            if (ApplicationData.Current.LocalSettings.Values.ContainsKey(key))
+            {
+                return (bool)ApplicationData.Current.LocalSettings.Values[key];
+            }
+            return false;
+        }
     }
 }
