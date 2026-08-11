@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="QR_Code_Generator.MassQRCode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QR_Code_Generator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel Margin="36,0,36,0">
+            <TextBlock Margin="0,40,0,36" Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">Mass QR Code Generator</TextBlock>
+
+            <!-- Data List -->
+            <ListView x:Name="MyListView" ItemsSource="{Binding MyData}">
+                
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding QRCodeData}" Grid.Column="0" FontSize="16"/>
+                            <TextBlock Text="{Binding QRCodeType}" Grid.Column="1" FontSize="16"/>
+                            <TextBlock Text="{Binding QRCodeData1}" Grid.Column="2" FontSize="16"/>
+                            <TextBlock Text="{Binding QRCodeData2}" Grid.Column="3" FontSize="16"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Button Content="Generate Mass QR Codes" Click="GenerateMassQRCodeButton_Click" Margin="0,20,0,0" Width="200" HorizontalAlignment="Left"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

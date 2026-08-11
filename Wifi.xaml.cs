@@ -68,6 +68,7 @@ namespace QR_Code_Generator
                 }
             }
         }
+
         private void GenerateWifiButton_Click(object sender, RoutedEventArgs e)
         {
             //Null check

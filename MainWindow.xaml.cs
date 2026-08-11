@@ -21,8 +21,36 @@ namespace QR_Code_Generator
 {
     public sealed partial class MainWindow : Window
     {
+        //Initialises the MainWindow and loads pages
+        public MainWindow()
+        {
+            this.InitializeComponent();
+            NavView.SelectedItem = NavView.MenuItems[0];
+            ContentFrame.Navigate(typeof(Wifi));
+            ExtendsContentIntoTitleBar = true;
+        }
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) // Handles the back button click event
+        {
+            if (ContentFrame.CanGoBack)
+            {
+                ContentFrame.GoBack();
+                var currentPageType = ContentFrame.CurrentSourcePageType;
+
+                foreach (var item in NavView.MenuItems.OfType<NavigationViewItem>())
+                {
+                    if (item.Tag.ToString() == currentPageType.Name)
+                    {
+                        NavView.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+        }
+
         public static class AppState
         {
+            public static bool[] elementHide = new bool[3] { true, true, true };
+
             //Downloads QR Code image to user selected location
             public static async Task Download(Bitmap bitmap)
             {
@@ -47,28 +75,29 @@ namespace QR_Code_Generator
             private static extern IntPtr GetActiveWindow();
         }
 
-        //Initialises the MainWindow and loads pages
-        public MainWindow()
+
+
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            this.InitializeComponent();
-            // Pages Here
-            WifiFrame.Navigate(typeof(Wifi));
-
-            //Titlebar Fixes
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-
-            if (appWindow != null)
+            if (args.IsSettingsSelected)
             {
-                var titleBar = appWindow.TitleBar;
+                ContentFrame.Navigate(typeof(Settings));
+                return;
+            }
 
-                titleBar.ExtendsContentIntoTitleBar = true;
-                titleBar.ButtonBackgroundColor = Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            
 
-                titleBar.ButtonForegroundColor = Colors.White;
-                titleBar.ButtonInactiveForegroundColor = Colors.Gray;
+            if (args.SelectedItem is NavigationViewItem item)
+            {
+                switch (item.Tag)
+                {
+                    case "Wifi":
+                        ContentFrame.Navigate(typeof(Wifi));
+                        break;
+                    case "MassQRCode":
+                        ContentFrame.Navigate(typeof(MassQRCode));
+                        break;
+                }
             }
         }
     }
