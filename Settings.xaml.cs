@@ -39,6 +39,8 @@ namespace QR_Code_Generator
             private const bool DefaultWifi = true;
             private const bool DefaultPhone = true;
             private const bool DefaultLink = true;
+
+            //Experiments
             private const bool DefaultShowMassQR = false;
 
             // ---- Publicly readable settings ----
@@ -84,7 +86,7 @@ namespace QR_Code_Generator
             WifiCheck.IsChecked = SettingData.Current.Wifi;
             PhoneCheck.IsChecked = SettingData.Current.Phone;
             LinkCheck.IsChecked = SettingData.Current.Link;
-            ShowMassQR.IsOn = SettingData.Current.ShowMassQR;
+            //ShowMassQR.IsOn = SettingData.Current.ShowMassQR;
         }
 
         private void Checkbox1(object sender, RoutedEventArgs e)

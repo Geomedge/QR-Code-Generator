@@ -31,6 +31,15 @@ namespace QR_Code_Generator
             ContentFrame.Navigate(typeof(Wifi));
             ExtendsContentIntoTitleBar = true;
             RefreshNavigationView();
+
+
+            AppWindow.Resize(new Windows.Graphics.SizeInt32(1200, 600));
+            OverlappedPresenter presenter = OverlappedPresenter.Create();
+            presenter.PreferredMinimumWidth = 1200;
+            presenter.PreferredMinimumHeight = 600;
+            AppWindow.SetPresenter(presenter);
+
+
         }
 
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) // Handles the back button click event

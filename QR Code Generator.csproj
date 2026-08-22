@@ -87,6 +87,7 @@
     <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Never</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>0BB784D88183B3170B94E746D8470A338FFC33A2</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>F0833030E6F16A6D15DBF7B07539E688B32C1038</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>QR Code Generator_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
 </Project>

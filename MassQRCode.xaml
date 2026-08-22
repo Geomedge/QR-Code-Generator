@@ -7,15 +7,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <!-- Left Top Right Bottom-->
 
     <Grid>
         <StackPanel Margin="36,0,36,0">
             <TextBlock Margin="0,40,0,36" Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">Mass QR Code Generator</TextBlock>
 
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="0,0,0,5" Width="110" Content="Import List" Grid.Column="0" Name="ImportButton" IsEnabled="True"/>
+                <Button Margin="5,0,0,5" Width="170" Content="Download Template" Grid.Column="1" Name="DownloadButton" IsEnabled="True"/>
+            </Grid>
+
             <!-- Data List -->
-            <ListView x:Name="MyListView" ItemsSource="{Binding MyData}">
-                
-                
+            <ListView x:Name="MyListView" ItemsSource="{Binding ListQR}">
+
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="5">
@@ -34,9 +44,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
-            <Button Content="Generate Mass QR Codes" Click="GenerateMassQRCodeButton_Click" Margin="0,20,0,0" Width="200" HorizontalAlignment="Left"/>
-
         </StackPanel>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Generate Mass QR Codes" Margin="36,20,36,50" Width="200"/>
     </Grid>
 </Page>
