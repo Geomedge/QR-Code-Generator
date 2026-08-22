@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -14,6 +14,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="MassQRCode.xaml" />
+    <None Remove="Settings.xaml" />
     <None Remove="Wifi.xaml" />
   </ItemGroup>
 
@@ -46,6 +48,16 @@
     <PackageReference Include="QRCoder" Version="1.8.0" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="MassQRCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Wifi.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,10 +83,11 @@
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Never</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>0BB784D88183B3170B94E746D8470A338FFC33A2</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>F0833030E6F16A6D15DBF7B07539E688B32C1038</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>QR Code Generator_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
 </Project>

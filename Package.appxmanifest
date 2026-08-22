@@ -11,8 +11,8 @@
 
   <Identity
     Name="Geomedge.QRCodeUtilityByGeomedge"
-    Publisher="CN=6E091585-6C35-43BD-B77E-F02839628F14"
-    Version="1.0.0.0" />
+    Publisher="CN=ThisPC"
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="bf6126ba-8ca4-468a-825b-8cfb6626fd57" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

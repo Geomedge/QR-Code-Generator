@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="QR_Code_Generator.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:CommunityToolkit.WinUI.Controls"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
+    <!--Left Up Right Down-->
+
+    <Grid>
+        <!--Grid so Scroll Viewer Works-->
+        <Border Margin="36,40,36,0">
+            <StackPanel>
+                <!--Stackpanel for border only-->
+                <StackPanel>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Grid.Row="0">Settings</TextBlock>
+
+                    <!--GENERAL SETTINGS-->
+                    <TextBlock Margin="0,10,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">Appearance &amp; Behavior</TextBlock>
+
+                    <local:SettingsCard x:Name="settingsCard"
+                           Header="Hide/Show Elements"
+                           Description="Select which elements should be hidden or shown."
+                           HeaderIcon="{ui:FontIcon Glyph=&#xE799;}">
+                        <StackPanel>
+                            <CheckBox x:Name="WifiCheck" Checked="Checkbox1" Unchecked="Checkbox1" Content="WiFi QR Codes"/>
+                            <CheckBox x:Name="LinkCheck" Checked="Checkbox1" Unchecked="Checkbox1" Content="Link QR Codes" />
+                            <CheckBox x:Name="PhoneCheck" Checked="Checkbox1" Unchecked="Checkbox1" Content="Phone QR Codes"/>
+                        </StackPanel>
+                    </local:SettingsCard>
+                </StackPanel>
+
+                
+                <!--
+
+                <StackPanel>
+                
+                    <TextBlock Margin="0,10,0,5" Grid.Row="0" Style="{StaticResource BodyStrongTextBlockStyle}">Experimental Settings</TextBlock>
+                    <InfoBar
+                    Grid.Row="1"
+                    IsOpen="True"
+                    Severity="Warning"
+                    Title="Experimental Features"
+                    Message="The following features are still in development. Behaviour may change and some functionality may be incomplete."
+                    IsClosable="True"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,5"/>
+
+                    <local:SettingsCard x:Name="experimnetssettingsCard"
+                           Header="Enable Mass QR Code Generation"
+                           Description="Show new Mass QR Code Generation Menu"
+                           HeaderIcon="{ui:FontIcon Glyph=&#xE710;}"
+                           Grid.Row="2">
+                        <StackPanel>
+                            <ToggleSwitch Name="ShowMassQR" Toggled="ToggleSwitch_Toggled"/>
+                        </StackPanel>
+                    </local:SettingsCard>
+                </StackPanel>
+                -->
+
+                <!--ABOUT Panel-->
+                <StackPanel>
+                    <TextBlock Margin="0,10,0,5" Style="{StaticResource BodyStrongTextBlockStyle}">About</TextBlock>
+                    <local:SettingsExpander x:Name="AboutExpander"
+                        VerticalAlignment="Top"
+                        Description="© 2026 Geomedge. All rights reserved."
+                        Header="QR Code Utility By Geomedge"
+                        >
+                        <TextBlock Grid.Column="1"
+                           Name="VersionTextBlock"
+                           Opacity="0.7"
+                           VerticalAlignment="Center"
+                           Style="{StaticResource BodyTextBlockStyle}" />
+                        <local:SettingsExpander.Items>
+
+                            <local:SettingsCard ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                               ActionIconToolTip="Open in new window"
+                               Click="OpenIssueLink_Click"
+                               Header="Report a bug or request a feature"
+                               IsClickEnabled="True"
+                               />
+
+                        </local:SettingsExpander.Items>
+                    </local:SettingsExpander>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

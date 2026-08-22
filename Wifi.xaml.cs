@@ -28,6 +28,7 @@ using Windows.Storage;
 using Windows.UI.Popups;
 using WinRT.Interop;
 using static QR_Code_Generator.MainWindow;
+using static QR_Code_Generator.Settings;
 using static QRCoder.PayloadGenerator;
 using static QRCoder.PayloadGenerator.WiFi;
 using static System.Net.Mime.MediaTypeNames;
@@ -68,6 +69,7 @@ namespace QR_Code_Generator
                 }
             }
         }
+
         private void GenerateWifiButton_Click(object sender, RoutedEventArgs e)
         {
             //Null check
@@ -169,5 +171,11 @@ namespace QR_Code_Generator
             await AppState.Download(resizedBitmap);
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            WifiCard.Visibility = SettingData.Current.Wifi ? Visibility.Visible : Visibility.Collapsed;
+            PhoneCard.Visibility = SettingData.Current.Phone ? Visibility.Visible : Visibility.Collapsed;
+            LinkCard.Visibility = SettingData.Current.Link ? Visibility.Visible : Visibility.Collapsed;
+        }
     }
 }
