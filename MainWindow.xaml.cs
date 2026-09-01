@@ -32,8 +32,8 @@ namespace QR_Code_Generator
             ExtendsContentIntoTitleBar = true;
             RefreshNavigationView();
 
-
-            AppWindow.Resize(new Windows.Graphics.SizeInt32(1200, 600));
+            //Works on 100% scaling, but not on higher scaling
+            //AppWindow.Resize(new Windows.Graphics.SizeInt32(1200, 600));
             OverlappedPresenter presenter = OverlappedPresenter.Create();
             presenter.PreferredMinimumWidth = 1200;
             presenter.PreferredMinimumHeight = 600;
